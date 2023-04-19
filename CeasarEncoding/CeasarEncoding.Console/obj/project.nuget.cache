@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "jFciMShMFz0WFmOooKN/2Cm5LS17cd0W2sxQKAVgFtEWSWyFRBLfA4zegQdMzfopcCSHBHbSNkNaJwEHeIs51Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lwnmas9\\Documents\\Git\\LAP\\CeasarEncoding\\CeasarEncoding.Console\\CeasarEncoding.Console.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lwnmas9\\.nuget\\packages\\spectre.console\\0.46.0\\spectre.console.0.46.0.nupkg.sha512",
+    "C:\\Users\\lwnmas9\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
+  ],
+  "logs": []
+}
