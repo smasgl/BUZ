@@ -85,11 +85,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lwnmas9\\Documents\\Git\\LAP\\CeasarEncoding\\CeasarEncoding.Console\\CeasarEncoding.Console.csproj",
+      "projectUniqueName": "C:\\Users\\lwnmas9\\Documents\\Git\\BUZ\\CeasarEncoding\\CeasarEncoding.Console\\CeasarEncoding.Console.csproj",
       "projectName": "CeasarEncoding.Console",
-      "projectPath": "C:\\Users\\lwnmas9\\Documents\\Git\\LAP\\CeasarEncoding\\CeasarEncoding.Console\\CeasarEncoding.Console.csproj",
+      "projectPath": "C:\\Users\\lwnmas9\\Documents\\Git\\BUZ\\CeasarEncoding\\CeasarEncoding.Console\\CeasarEncoding.Console.csproj",
       "packagesPath": "C:\\Users\\lwnmas9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lwnmas9\\Documents\\Git\\LAP\\CeasarEncoding\\CeasarEncoding.Console\\obj\\",
+      "outputPath": "C:\\Users\\lwnmas9\\Documents\\Git\\BUZ\\CeasarEncoding\\CeasarEncoding.Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
