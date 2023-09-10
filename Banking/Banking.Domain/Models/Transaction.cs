@@ -12,5 +12,10 @@
         public decimal Amount { get; }
         public string Note { get; }
         public DateTime Date { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Amount}$ at {Date} : {Note}";
+        }
     }
 }

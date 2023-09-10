@@ -55,12 +55,8 @@ namespace Banking.Presentation.GUI.ViewModels
 
                     if (saveFileDialog.ShowDialog() ?? false)
                     {
-                        writer = new StreamWriter(saveFileDialog.FileName);
-
-                        writer.WriteLine(string.Join(",", new List<string>() { nameof(Transaction.Date), nameof(Transaction.Amount), nameof(Transaction.Note) }));
-                        Transactions.ForEach(transaction => writer.WriteLine(string.Join(",", new List<string>() { transaction.Date.ToString(), transaction.Amount.ToString(), transaction.Note })));
-
-                        writer.Close();
+                        var transactionHistory = bankAccount.ExportTransactionsAsCsv(DateTime.MinValue, DateTime.MaxValue);
+                        File.WriteAllText(saveFileDialog.FileName, transactionHistory);
                     }
                 });
         }
