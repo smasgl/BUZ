@@ -46,6 +46,7 @@
 
             <Button Command="{Binding MakeDeposite}">Make Deposite</Button>
             <Button Command="{Binding MakeWithdrawal}">Make Withdrawal</Button>
+            <Button Command="{Binding Export}">Export</Button>
         </StackPanel>
 
         <!-- Footer -->

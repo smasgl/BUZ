@@ -1,9 +1,12 @@
 ﻿using Banking.Domain.Interfaces;
 using Banking.Domain.Models;
 using Banking.Presentation.GUI.Common;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,12 +45,31 @@ namespace Banking.Presentation.GUI.ViewModels
                     Amount = 0;
                 },
                 canExecute: CanAddTransaction);
+
+            Export = new RelayCommand(
+                execute: () =>
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "CSV file (*.csv)|*.csv";
+                    StreamWriter writer = null;
+
+                    if (saveFileDialog.ShowDialog() ?? false)
+                    {
+                        writer = new StreamWriter(saveFileDialog.FileName);
+
+                        writer.WriteLine(string.Join(",", new List<string>() { nameof(Transaction.Date), nameof(Transaction.Amount), nameof(Transaction.Note) }));
+                        Transactions.ForEach(transaction => writer.WriteLine(string.Join(",", new List<string>() { transaction.Date.ToString(), transaction.Amount.ToString(), transaction.Note })));
+
+                        writer.Close();
+                    }
+                });
         }
 
         #region properties
 
         public RelayCommand MakeDeposite { get; }
         public RelayCommand MakeWithdrawal { get; }
+        public RelayCommand Export { get; }
 
         private List<Transaction> _Transactions;
         public List<Transaction> Transactions
