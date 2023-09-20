@@ -5,11 +5,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        CoffeeMachine redCoffeeMachine = new CoffeeMachine();
-        redCoffeeMachine.color = "red";
+        CoffeeMachine redCoffeeMachine = new CoffeeMachine(CoffeeMachineColor.Red);
 
-        CoffeeMachine greenCoffeeMachine = new CoffeeMachine();
-        greenCoffeeMachine.color = "green";
+        CoffeeMachine greenCoffeeMachine = new CoffeeMachine(CoffeeMachineColor.Green);
 
         redCoffeeMachine.CreateSmallCoffee();
         greenCoffeeMachine.CreateSmallCoffee();

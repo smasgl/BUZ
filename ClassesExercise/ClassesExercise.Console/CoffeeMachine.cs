@@ -8,8 +8,22 @@ namespace ClassesExercise.Console
 {
     public class CoffeeMachine
     {
-        public string color;
-        public int power;
+        public CoffeeMachineColor Color { get; }
+        public int Power { get; set; }
+
+        public static int NumberOfCreatedCoffeeMachines { get; private set; } = 0;
+
+        public CoffeeMachine(CoffeeMachineColor color) : this(color, 1)
+        {
+        }
+
+        public CoffeeMachine(CoffeeMachineColor color, int power)
+        {
+            Color = color;
+            Power = power;
+
+            NumberOfCreatedCoffeeMachines++;
+        }
 
         public void SetGrindingDegree(int degree)
         {
@@ -18,25 +32,25 @@ namespace ClassesExercise.Console
 
         public void SetGrindingPower(int power)
         {
-            this.power = power;
+            Power = power;
             System.Console.WriteLine($"Set grinding power to: {power}");
         }
 
         public void CreateBigCoffee()
         {
             StartHeater();
-            System.Console.WriteLine($"{color} maschine creating a coffee with a big amount of water.");
+            System.Console.WriteLine($"{Color} maschine creating a coffee with a big amount of water.");
         }
 
         public void CreateSmallCoffee()
         {
             StartHeater();
-            System.Console.WriteLine($"{color} maschine creating a coffee with a small amount of water.");
+            System.Console.WriteLine($"{Color} maschine creating a coffee with a small amount of water.");
         }
 
         private void StartHeater()
         {
-            System.Console.WriteLine($"{color} maschine starting the heater.");
+            System.Console.WriteLine($"{Color} maschine starting the heater.");
         }
     }
 }
