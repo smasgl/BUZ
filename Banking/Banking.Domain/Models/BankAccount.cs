@@ -1,5 +1,8 @@
 ﻿using Banking.Domain.Interfaces;
+using System.Data.Common;
 using System.Text;
+using System.Text.Json.Nodes;
+using System.Transactions;
 
 namespace Banking.Domain.Models
 {
@@ -82,6 +85,41 @@ namespace Banking.Domain.Models
             sb.AppendFormat("{0};{1};{2}", DateTime.Now, withdrawals + deposites, "Sum").AppendLine();
 
             return sb.ToString();
+        }
+
+        public string ExportTransactionsAsJson(DateTime from, DateTime to)
+        {
+            decimal deposites = 0;
+            decimal withdrawals = 0;
+
+            JsonArray transactions = new JsonArray();
+            foreach (var transaction in _Transactions)
+            {
+                if (transaction.Date >= from && transaction.Date <= to)
+                {
+                    if (transaction.Amount < 0)
+                        withdrawals += transaction.Amount;
+                    else
+                        deposites += transaction.Amount;
+
+                    transactions.Add(new JsonObject()
+                    {
+                        { "Date", transaction.Date },
+                        { "Amount", transaction.Amount },
+                        { "Note", transaction.Note }
+                    });
+                }
+            }
+
+            var data = new JsonObject()
+            {
+                { "Transactions", transactions },
+                { "Deposites", deposites },
+                { "Withdrawals", withdrawals },
+                { "Sum", withdrawals + deposites }
+            };
+
+            return data.ToJsonString(new System.Text.Json.JsonSerializerOptions() { WriteIndented = true});
         }
 
         public override string ToString()

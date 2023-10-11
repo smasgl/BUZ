@@ -13,7 +13,7 @@ namespace Banking.Presentation.CLI
             // Sicherstellen, dass € zeichen auch ausgegeben wird
             System.Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            string[] menu = { "Neues Konto anlegen", "Alle verfügbaren Konten anzeigen", "Transaktionen eines Kontos anzeigen", "Einzahlung / Auszahlung durchführen", "Csv Export erstellen und an einen vom Benutzer eingegebenen Pfad speichern" };
+            string[] menu = { "Neues Konto anlegen", "Alle verfügbaren Konten anzeigen", "Transaktionen eines Kontos anzeigen", "Einzahlung / Auszahlung durchführen", "Csv und Json Export erstellen und an einen vom Benutzer eingegebenen Pfad speichern" };
 
             while (true)
             {
@@ -80,7 +80,7 @@ namespace Banking.Presentation.CLI
             }
         }
 
-        static void ExportCSV()
+        static void Export()
         {
             if (BankAccounts.Count <= 0)
             {
@@ -93,11 +93,17 @@ namespace Banking.Presentation.CLI
             if (exeFolder == null)
                 return;
 
-            var exportFilePath = Path.Combine(exeFolder, bankAccount.Owner.Replace(' ', '_') + ".csv");
+            var exportFilePathCsv = Path.Combine(exeFolder, bankAccount.Owner.Replace(' ', '_') + ".csv");
 
-            var transactionHistory = bankAccount.ExportTransactionsAsCsv(DateTime.MinValue, DateTime.MaxValue);
-            File.WriteAllText(exportFilePath, transactionHistory);
-            Console.WriteLine($"All the transaction of {bankAccount.Owner} have been saved at:\n{exportFilePath}");
+            var transactionHistoryCsv = bankAccount.ExportTransactionsAsCsv(DateTime.MinValue, DateTime.MaxValue);
+            File.WriteAllText(exportFilePathCsv, transactionHistoryCsv);
+            Console.WriteLine($"All the transaction of {bankAccount.Owner} have been saved at:\n{exportFilePathCsv}");
+
+            var exportFilePathJson = Path.Combine(exeFolder, bankAccount.Owner.Replace(' ', '_') + ".json");
+
+            var transactionHistoryJson = bankAccount.ExportTransactionsAsJson(DateTime.MinValue, DateTime.MaxValue);
+            File.WriteAllText(exportFilePathJson, transactionHistoryJson);
+            Console.WriteLine($"All the transaction of {bankAccount.Owner} have been saved at:\n{exportFilePathJson}");
         }
 
         static void ChosenMenu(string option)
@@ -116,8 +122,8 @@ namespace Banking.Presentation.CLI
                 case "Einzahlung / Auszahlung durchführen":
                     CreateTransaction();
                     break;
-                case "Csv Export erstellen und an einen vom Benutzer eingegebenen Pfad speichern":
-                    ExportCSV();
+                case "Csv und Json Export erstellen und an einen vom Benutzer eingegebenen Pfad speichern":
+                    Export();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("That menu options was not found!");

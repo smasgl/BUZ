@@ -49,14 +49,24 @@ namespace Banking.Presentation.GUI.ViewModels
             Export = new RelayCommand(
                 execute: () =>
                 {
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Filter = "CSV file (*.csv)|*.csv";
+                    SaveFileDialog saveFileDialogCsv = new SaveFileDialog();
+                    saveFileDialogCsv.Filter = "CSV file (*.csv)|*.csv";
                     StreamWriter writer = null;
 
-                    if (saveFileDialog.ShowDialog() ?? false)
+                    if (saveFileDialogCsv.ShowDialog() ?? false)
                     {
                         var transactionHistory = bankAccount.ExportTransactionsAsCsv(DateTime.MinValue, DateTime.MaxValue);
-                        File.WriteAllText(saveFileDialog.FileName, transactionHistory);
+                        File.WriteAllText(saveFileDialogCsv.FileName, transactionHistory);
+                    }
+
+                    SaveFileDialog saveFileDialogJson = new SaveFileDialog();
+                    saveFileDialogJson.Filter = "JSON file (*.json)|*.json";
+                    StreamWriter writerJson = null;
+
+                    if (saveFileDialogJson.ShowDialog() ?? false)
+                    {
+                        var transactionHistory = bankAccount.ExportTransactionsAsJson(DateTime.MinValue, DateTime.MaxValue);
+                        File.WriteAllText(saveFileDialogJson.FileName, transactionHistory);
                     }
                 });
         }
