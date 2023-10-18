@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Presentation.CLI", "Banking.Presentation.CLI\Banking.Presentation.CLI.csproj", "{D9102FA6-86E7-4FEE-AD16-3F94656C4F8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Presentation.CLI", "Banking.Presentation.CLI\Banking.Presentation.CLI.csproj", "{D9102FA6-86E7-4FEE-AD16-3F94656C4F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Domain", "Banking.Domain\Banking.Domain.csproj", "{749B73FE-BAC0-4244-8BD9-2D7B67148EA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Domain", "Banking.Domain\Banking.Domain.csproj", "{749B73FE-BAC0-4244-8BD9-2D7B67148EA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Presentation.GUI", "Banking.Presentation.GUI\Banking.Presentation.GUI.csproj", "{7CAE6BC8-43CC-4BB2-A67C-1BF512F914CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Presentation.GUI", "Banking.Presentation.GUI\Banking.Presentation.GUI.csproj", "{7CAE6BC8-43CC-4BB2-A67C-1BF512F914CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Business", "Banking.Business\Banking.Business.csproj", "{7FD45877-B625-43D8-A4E8-EA4F0794BB98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7CAE6BC8-43CC-4BB2-A67C-1BF512F914CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAE6BC8-43CC-4BB2-A67C-1BF512F914CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAE6BC8-43CC-4BB2-A67C-1BF512F914CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD45877-B625-43D8-A4E8-EA4F0794BB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD45877-B625-43D8-A4E8-EA4F0794BB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD45877-B625-43D8-A4E8-EA4F0794BB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD45877-B625-43D8-A4E8-EA4F0794BB98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

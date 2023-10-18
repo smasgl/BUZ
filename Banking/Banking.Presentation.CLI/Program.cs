@@ -1,4 +1,5 @@
-﻿using Banking.Domain.Interfaces;
+﻿using Banking.Business.Services;
+using Banking.Domain.Interfaces;
 using Banking.Domain.Models;
 using Banking.Presentation.CLI.Services;
 
@@ -15,6 +16,8 @@ namespace Banking.Presentation.CLI
 
             string[] menu = { "Neues Konto anlegen", "Alle verfügbaren Konten anzeigen", "Transaktionen eines Kontos anzeigen", "Einzahlung / Auszahlung durchführen", "Csv und Json Export erstellen und an einen vom Benutzer eingegebenen Pfad speichern" };
 
+            BankAccounts = AccountDataService.LoadAccounts();
+
             while (true)
             {
                 ConsoleService.Header();
@@ -25,6 +28,9 @@ namespace Banking.Presentation.CLI
         static void CreateAccount()
         {
             BankAccounts.Add(ConsoleService.CreateBankAccount());
+
+            AccountDataService.SaveAccounts(BankAccounts);
+
             Console.WriteLine("A new account has been added.");
         }
 
@@ -78,6 +84,8 @@ namespace Banking.Presentation.CLI
                 default:
                     throw new ArgumentOutOfRangeException("That menu options was not found!");
             }
+
+            AccountDataService.SaveAccounts(BankAccounts);
         }
 
         static void Export()

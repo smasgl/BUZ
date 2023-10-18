@@ -24,8 +24,14 @@ namespace Banking.Domain.Models
             Number = $"AT42 1234 5678 {AccountCounter:0000}";
             _Transactions = new List<Transaction>();
 
-            MakeDeposit(initialBalance, "Initial Balance");
+            AccountCounter++;
+        }
 
+        public BankAccount(string owner, string number, decimal balance, List<Transaction> transactions)
+        {
+            Owner = owner;
+            Number = number;
+            _Transactions = transactions;
             AccountCounter++;
         }
 
